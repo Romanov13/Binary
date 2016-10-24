@@ -9,8 +9,9 @@ public class Binary extends JFrame{
 	JPanel gridPanel;
 	ArrayList<JCheckBox> checkBoxes;
 	ArrayList<JLabel> indexes;
-	String labels[] = {"128", "64", "32", "16", "8", "4", "2", "1"};
+	int labels[] = {128, 64, 32, 16, 8, 4, 2, 1};
 	JLabel result;
+	int res = 0;
 	
 	Binary(){
 		super("Binary");
@@ -37,9 +38,13 @@ public class Binary extends JFrame{
 						for(int i=0; i<8; i++){
 							if((c.isSelected())&&e.getSource().equals(checkBoxes.get(i))){
 						indexes.get(i).setText("1");
+						res = res + labels[i];
+						result.setText(Integer.toString(res));
 						}
 							if((!c.isSelected())&&e.getSource().equals(checkBoxes.get(i))){
 								indexes.get(i).setText("0");
+								res = res - labels[i];
+								result.setText(Integer.toString(res));
 								}
 					}
 				}
@@ -48,13 +53,14 @@ public class Binary extends JFrame{
 			gridPanel.add(c);
 		}
 		for(int i=0; i<8; i++){
-			JLabel l = new JLabel(labels[i]);
+			JLabel l = new JLabel(Integer.toString(labels[i]));
 			gridPanel.add(l);
 		}
-		
+		result = new JLabel(Integer.toString(res));
+		basicBox.add(result);
 		basic.add(BorderLayout.CENTER, basicBox);
-		result = new JLabel("");
-		basic.add(result);
+		
+		
 		setContentPane(basic);
 		
 		setSize(800, 400);
