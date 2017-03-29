@@ -38,12 +38,12 @@ public class Binary extends JFrame{
 						for(int i=0; i<8; i++){
 							if((c.isSelected())&&e.getSource().equals(checkBoxes.get(i))){
 						indexes.get(i).setText("1");
-						res = res + labels[i];
+						res += labels[i];
 						result.setText(Integer.toString(res));
 						}
 							if((!c.isSelected())&&e.getSource().equals(checkBoxes.get(i))){
 								indexes.get(i).setText("0");
-								res = res - labels[i];
+								res -= labels[i];
 								result.setText(Integer.toString(res));
 								}
 					}
@@ -66,13 +66,13 @@ public class Binary extends JFrame{
 		setSize(800, 400);
 		setResizable(false);
 		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 	
 	
 	public static void main(String[] args){
-		Binary bi = new Binary();
-		bi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		new Binary();
 	}
 	
 }
